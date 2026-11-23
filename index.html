@@ -99,6 +99,11 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
 .pwa{position:fixed;inset-inline-start:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;width:54px;height:54px;border-radius:50%;background:#1fa855;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.4);text-decoration:none;color:#fff;font-size:26px}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070b16}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+.social{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.social a{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:99px;padding:8px 16px;color:var(--gold);text-decoration:none;font-size:15px;min-height:44px;transition:transform .2s,border-color .2s,background .2s}
+.social a:hover{transform:translateY(-2px);border-color:var(--gold);background:rgba(212,175,55,.1)}
+.social svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.social b{font:700 20px Amiri,serif;line-height:1}
 </style>
 </head>
 <body>
@@ -158,7 +163,11 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
 <p class="rate" id="rt"></p><p class="note" data-t="ratenote">أسعار الصرف هنا قيم تجريبية وليست مباشرة؛ سيحدّثها المدير من لوحة التحكم بعد ربط الخادم.</p></div>
 </div></div></section>
 </main>
-<footer><div class="wrap">DAR LUTF REAL ESTATE · دار لطف العقارية · صنعاء، اليمن<br><a href="#" id="adm" style="color:var(--mute);font-size:12px">إدارة</a></div></footer>
+<footer><div class="wrap"><div class="social" aria-label="حساباتنا">
+<a href="https://www.instagram.com/mohamed_lotf21" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg><span>إنستقرام</span></a>
+<a href="https://www.facebook.com/share/19aBa5tXvd/" target="_blank" rel="noopener noreferrer"><b>f</b><span>فيسبوك</span></a>
+<a href="https://www.tiktok.com/@mohamedlotfi_realestate" target="_blank" rel="noopener noreferrer"><b>♪</b><span>تيك توك</span></a>
+<a href="https://youtube.com/@mohamedlotfi-v5j" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg><span>يوتيوب</span></a></div>DAR LUTF REAL ESTATE · دار لطف العقارية · صنعاء، اليمن<br><a href="#" id="adm" style="color:var(--mute);font-size:12px">إدارة</a></div></footer>
 <a class="pwa" id="waf" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
 
 <div class="modal" id="m"><div class="sheet" id="sheet"></div></div>
