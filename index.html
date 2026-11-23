@@ -106,6 +106,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
 .social b{font:700 20px Amiri,serif;line-height:1}
 .img img{width:100%;height:100%;object-fit:cover;display:block}
 .gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:6px}.gal img{flex:0 0 100%;height:260px;object-fit:cover;scroll-snap-align:center}
+@media(max-width:430px){.logo{font-size:17px}.logo span{display:none}header .pill{padding:4px 9px;font-size:13px}}
 </style>
 </head>
 <body>
@@ -114,6 +115,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
 <header><div class="wrap">
 <div class="logo">دار لطف <span data-t="brandsfx">العقارية</span></div>
 <select id="cur" class="pill" aria-label="currency" style="background:var(--bg)"><option value="YER">ر.ي</option><option value="USD">$</option><option value="SAR">ر.س</option></select>
+<button class="pill" id="acc" data-t="acc">حسابي</button>
 <button class="pill" id="lang">EN</button>
 <button class="pill" id="theme" aria-label="theme">☀</button>
 </div></header>
@@ -189,8 +191,8 @@ let P=[
 {id:6,t:"bld",h:"شارع الزبيري",n:["عمارة تجارية بالزبيري","Zubairi Street Building"],p:560000,m:520,r:12,fl:5,f:0,v:0,doc:"سجل عقاري",ins:null,upd:"2026-09-18",hue:45},
 {id:7,t:"land",h:"خط المطار الجديد",n:["أرض سكنية خط المطار","Airport Road Land"],p:95000,m:700,r:0,fl:0,f:0,v:0,doc:"بصيرة",ins:null,upd:"2026-10-27",hue:120},
 {id:8,t:"house",h:"سعوان",n:["بيت واسع في سعوان","Spacious House, Sawan"],p:150000,m:320,r:6,fl:2,f:0,v:0,doc:"بصيرة",ins:null,upd:"2026-11-08",hue:300}];
-const T={ar:{brandsfx:"العقارية",sub:"اكتشف عقارك في صنعاء بثقة",founder:"المؤسس والمدير",anyp:"أي سعر",search:"بحث",props:"العقارات",props2:"عقارات مختارة في أحياء صنعاء",trusth:"الثقة والتوثيق",trustp:"لا تُمنح شارة «موثوق» إلا بعد فحص ميداني واعتماد المدير.",s1:"عقار معروض",s2:"حيّ ومنطقة",s3:"عقار موثّق",s4:"عملات",exph:"للمغتربين اليمنيين",expp:"عاين وابتَع من خارج اليمن مع فريق دار لطف.",viewh:"طلب معاينة عن بُعد",buyh:"طلب شراء من خارج اليمن",convh:"محول العملات",m1:"صور ومعاينة مصورة",m2:"مكالمة فيديو لمشاهدة العقار",send:"إرسال عبر واتساب",ratenote:"أسعار الصرف هنا قيم تجريبية وليست مباشرة؛ سيحدّثها المدير من لوحة التحكم بعد ربط الخادم.",all:"جميع المناطق",qph:"ابحث عن عقار…",name:"الاسم",country:"بلد الإقامة",propph:"العقار أو الحي",budget:"الميزانية",note:"ملاحظات"},
-en:{brandsfx:"Real Estate",sub:"Discover your Sana'a property with confidence",founder:"Founder & Manager",anyp:"Any price",search:"Search",props:"Properties",props2:"Selected properties across Sana'a",trusth:"Trust & Verification",trustp:"A Verified badge is granted only after a field inspection and admin approval.",s1:"Listings",s2:"Districts",s3:"Verified",s4:"Currencies",exph:"For Yemeni Expatriates",expp:"View and buy from abroad with the Dar Lutf team.",viewh:"Remote viewing request",buyh:"Purchase request from abroad",convh:"Currency converter",m1:"Photos & recorded tour",m2:"Video call to see the property",send:"Send via WhatsApp",ratenote:"Rates here are sample values, not live; the admin will update them once the server is connected.",all:"All districts",qph:"Search properties…",name:"Name",country:"Country of residence",propph:"Property or district",budget:"Budget",note:"Notes"}};
+const T={ar:{brandsfx:"العقارية",acc:"حسابي",sub:"اكتشف عقارك في صنعاء بثقة",founder:"المؤسس والمدير",anyp:"أي سعر",search:"بحث",props:"العقارات",props2:"عقارات مختارة في أحياء صنعاء",trusth:"الثقة والتوثيق",trustp:"لا تُمنح شارة «موثوق» إلا بعد فحص ميداني واعتماد المدير.",s1:"عقار معروض",s2:"حيّ ومنطقة",s3:"عقار موثّق",s4:"عملات",exph:"للمغتربين اليمنيين",expp:"عاين وابتَع من خارج اليمن مع فريق دار لطف.",viewh:"طلب معاينة عن بُعد",buyh:"طلب شراء من خارج اليمن",convh:"محول العملات",m1:"صور ومعاينة مصورة",m2:"مكالمة فيديو لمشاهدة العقار",send:"إرسال عبر واتساب",ratenote:"أسعار الصرف هنا قيم تجريبية وليست مباشرة؛ سيحدّثها المدير من لوحة التحكم بعد ربط الخادم.",all:"جميع المناطق",qph:"ابحث عن عقار…",name:"الاسم",country:"بلد الإقامة",propph:"العقار أو الحي",budget:"الميزانية",note:"ملاحظات"},
+en:{brandsfx:"Real Estate",acc:"Account",sub:"Discover your Sana'a property with confidence",founder:"Founder & Manager",anyp:"Any price",search:"Search",props:"Properties",props2:"Selected properties across Sana'a",trusth:"Trust & Verification",trustp:"A Verified badge is granted only after a field inspection and admin approval.",s1:"Listings",s2:"Districts",s3:"Verified",s4:"Currencies",exph:"For Yemeni Expatriates",expp:"View and buy from abroad with the Dar Lutf team.",viewh:"Remote viewing request",buyh:"Purchase request from abroad",convh:"Currency converter",m1:"Photos & recorded tour",m2:"Video call to see the property",send:"Send via WhatsApp",ratenote:"Rates here are sample values, not live; the admin will update them once the server is connected.",all:"All districts",qph:"Search properties…",name:"Name",country:"Country of residence",propph:"Property or district",budget:"Budget",note:"Notes"}};
 let L="ar",cat="all";
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const t=k=>T[L][k]||k;
@@ -255,11 +257,11 @@ $("#grid").addEventListener("pointerleave",()=>$$(".card").forEach(c=>c.style.tr
 
 // ===== Supabase (المفتاح العام فقط؛ الحماية في قواعد قاعدة البيانات) =====
 const SB="https://smapnkavgtfurozkbicl.supabase.co",KEY="sb_publishable_8Y7SRG2psC5LZf91gnPJaA_O9lNkBbZ";
-let TOK=null,ROWS=[];const SAMPLE=P.slice();
+let TOK=null,RT=null,EMAIL="",ISADM=false,ROWS=[];const SAMPLE=P.slice();
 const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-async function api(path,o={}){const h={apikey:KEY,"Content-Type":"application/json",Prefer:"return=representation",...(o.headers||{})};if(TOK)h.Authorization="Bearer "+TOK;const r=await fetch(SB+path,{...o,headers:h});const tx=await r.text();if(!r.ok)throw new Error(tx);return tx?JSON.parse(tx):null}
+async function api(path,o={}){const h={apikey:KEY,"Content-Type":"application/json",Prefer:"return=representation",...(o.headers||{})};if(TOK)h.Authorization="Bearer "+TOK;const r=await fetch(SB+path,{...o,headers:h});const tx=await r.text();if(!r.ok){if(TOK&&!o._r&&/jwt|expired/i.test(tx)&&await refresh())return api(path,{...o,_r:1});throw new Error(tx)}return tx?JSON.parse(tx):null}
 const mapRow=r=>({id:r.id,t:r.type,h:esc(r.hood),n:[esc(r.title_ar),esc(r.title_en||r.title_ar)],p:r.price_usd||(r.price_yer?r.price_yer/RATES.YER:0),m:r.area_m2||0,r:r.rooms||0,fl:r.floors||0,f:r.featured,v:r.verified,doc:esc(r.doc_type||"—"),ins:r.inspected_at,upd:(r.updated_at||"").slice(0,10),hue:(r.id*67)%360,im:r.images||[],vid:r.video_url||""});
-async function loadAll(){try{const [rows,rt]=await Promise.all([api("/rest/v1/properties?select=*&order=featured.desc,id.desc"),api("/rest/v1/rates?select=*")]);ROWS=rows;P=rows.map(mapRow);rt.forEach(x=>RATES[x.currency]=+x.per_usd)}catch(e){console.warn(e)}
+async function loadAll(){try{const [rows,rt]=await Promise.all([api("/rest/v1/properties?select=*&order=featured.desc,id.desc"),api("/rest/v1/rates?select=*")]);ROWS=rows;P=rows.filter(r=>r.published).map(mapRow);rt.forEach(x=>RATES[x.currency]=+x.per_usd)}catch(e){console.warn(e)}
  const n=$$("[data-n]");if(n[0]){n[0].dataset.n=P.length;n[0].textContent=P.length}if(n[2]){const v=P.filter(p=>p.v).length;n[2].dataset.n=v;n[2].textContent=v}render();conv()}
 
 const okU=u=>/^https:\/\//.test(u||"");
@@ -270,10 +272,27 @@ async function upImg(b){const p=`p/${Date.now()}-${Math.random().toString(36).sl
 let FIM=[];
 function showIms(){const e=$("#ims");if(e)e.innerHTML=FIM.map((u,i)=>`<span style="position:relative;display:inline-block;margin:6px"><img src="${esc(u)}" alt="" style="width:76px;height:76px;object-fit:cover;border-radius:8px;border:1px solid var(--line)"><button type="button" class="pill" data-a="rmim" data-i="${i}" style="position:absolute;top:-8px;inset-inline-end:-8px;min-height:26px;padding:0 8px">✕</button></span>`).join("")}
 async function addIms(ev){const fs=[...ev.target.files],st=$("#ist");for(const f of fs){if(FIM.length>=12){st.textContent="الحد الأقصى 12 صورة";break}try{st.textContent="جارٍ رفع "+f.name+"…";FIM.push(await upImg(await shrink(f)));showIms()}catch(e){st.textContent="فشل الرفع: "+e.message;return}}st.textContent="تم الرفع. اضغط «حفظ» لتثبيت الصور.";ev.target.value=""}
+
+const Z=(a,e)=>L=="ar"?a:e;
+function dlClear(){TOK=null;RT=null;EMAIL="";ISADM=false;try{localStorage.removeItem("dl_rt")}catch(e){}}
+function saveS(j){TOK=j.access_token;RT=j.refresh_token;EMAIL=(j.user&&j.user.email)||EMAIL;try{localStorage.setItem("dl_rt",RT)}catch(e){}}
+async function authReq(g,b){const r=await fetch(SB+"/auth/v1/token?grant_type="+g,{method:"POST",headers:{apikey:KEY,"Content-Type":"application/json"},body:JSON.stringify(b)});const j=await r.json();if(!r.ok)throw new Error(j.msg||j.error_description||j.message||"error");return j}
+async function refresh(){try{let rt=RT;if(!rt)try{rt=localStorage.getItem("dl_rt")}catch(e){}if(!rt)return false;saveS(await authReq("refresh_token",{refresh_token:rt}));return true}catch(e){dlClear();return false}}
+async function chkAdm(){try{ISADM=(await api("/rest/v1/rpc/is_admin",{method:"POST",body:"{}"}))===true}catch(e){ISADM=false}}
+async function boot(){try{if(await refresh())await chkAdm()}catch(e){}await loadAll()}
+const msgAr=m=>/Invalid login/i.test(m)?Z("البريد أو كلمة المرور غير صحيحة","Wrong email or password"):/already|registered/i.test(m)?Z("هذا البريد مسجّل. سجّل الدخول بدلاً من ذلك","Already registered. Sign in instead"):/rate|too many|limit/i.test(m)?Z("محاولات كثيرة، انتظر قليلاً","Too many attempts, please wait"):/confirm/i.test(m)?Z("أكّد بريدك أولاً من الرسالة المرسلة إليك","Confirm your email first"):Z("تعذر تنفيذ الطلب","Request failed");
+function acctForm(msg=""){showM(`<h2>${Z("حسابي","My account")}</h2><div class="f"><input id="ce" type="email" dir="ltr" placeholder="${Z("البريد الإلكتروني","Email")}" autocomplete="username"><input id="cp" type="password" dir="ltr" placeholder="${Z("كلمة المرور (8 أحرف على الأقل)","Password (8+ characters)")}" autocomplete="current-password"><button class="btn" data-a="cl">${Z("دخول","Sign in")}</button><button class="btn ghost" data-a="cs">${Z("إنشاء حساب جديد","Create account")}</button><p class="note">${msg}</p></div>`)}
+async function acct(){if(!TOK)return acctForm();
+ let pu=[],rq=[];try{pu=await api("/rest/v1/purchases?select=*&order=created_at.desc")}catch(e){}try{if(!ISADM)rq=await api("/rest/v1/requests?select=*&order=created_at.desc&limit=20")}catch(e){}
+ const KL={plans:Z("المخططات والصور الداخلية","Plans & interior photos"),gps:Z("الموقع الدقيق","Exact location")},RK={remote_view:Z("معاينة عن بُعد","Remote viewing"),purchase:Z("طلب شراء","Purchase request")};
+ showM(`<h2>${Z("حسابي","My account")}</h2><p class="meta"><span dir="ltr">${esc(EMAIL)}</span></p>${ISADM?`<button class="btn" data-a="cadm" style="margin:8px 0">${Z("لوحة الإدارة","Admin panel")}</button>`:""}
+ <h3>${Z("مشترياتي","My purchases")}</h3>${pu.map(x=>{const p=P.find(q=>q.id==x.property_id);return `<div class="box" style="margin:8px 0;padding:12px">${p?p.n[L=="ar"?0:1]:"—"} · ${KL[x.kind]||esc(x.kind)}<div class="note">${(x.created_at||"").slice(0,10)}</div></div>`}).join("")||`<p class="note">${Z("لا توجد مشتريات بعد.","No purchases yet.")}</p>`}
+ ${ISADM?"":`<h3>${Z("طلباتي","My requests")}</h3>${rq.map(q=>`<div class="box" style="margin:8px 0;padding:12px;font-size:14px"><b>${RK[q.kind]||esc(q.kind)}</b><div class="note">${(q.created_at||"").slice(0,10)}</div></div>`).join("")||`<p class="note">${Z("لا توجد طلبات.","No requests.")}</p>`}`}
+ <button class="btn ghost" data-a="cout" style="margin-top:12px">${Z("تسجيل الخروج","Sign out")}</button>`)}
 const NUM=[["price_usd","السعر بالدولار $"],["price_yer","السعر بالريال اليمني"],["area_m2","المساحة م²"],["area_labna","المساحة باللبنة"],["rooms","عدد الغرف"],["floors","عدد الأدوار"]];
 const showM=h=>{$("#sheet").innerHTML='<button class="x" aria-label="close">✕</button><div class="body">'+h+'</div>';$("#m").classList.add("open")};
 function login(msg=""){showM(`<h2>دخول الإدارة</h2><div class="f"><input id="ae" type="email" dir="ltr" placeholder="البريد الإلكتروني" autocomplete="username"><input id="ap" type="password" dir="ltr" placeholder="كلمة المرور" autocomplete="current-password"><button class="btn" data-a="login">دخول</button><p class="note">${msg}</p></div>`)}
-async function doLogin(){try{const r=await fetch(SB+"/auth/v1/token?grant_type=password",{method:"POST",headers:{apikey:KEY,"Content-Type":"application/json"},body:JSON.stringify({email:$("#ae").value.trim(),password:$("#ap").value})});const j=await r.json();if(!r.ok)throw 0;TOK=j.access_token;const ok=await api("/rest/v1/rpc/is_admin",{method:"POST",body:"{}"});if(ok!==true){TOK=null;return login("هذا الحساب ليس مديراً.")}await loadAll();panel()}catch(e){TOK=null;login("بيانات الدخول غير صحيحة.")}}
+async function doLogin(){try{saveS(await authReq("password",{email:$("#ae").value.trim(),password:$("#ap").value}));await chkAdm();if(!ISADM){dlClear();return login("هذا الحساب ليس مديراً.")}await loadAll();panel()}catch(e){dlClear();login("بيانات الدخول غير صحيحة.")}}
 async function panel(){let rq=[];try{rq=await api("/rest/v1/requests?select=*&order=created_at.desc&limit=30")}catch(e){}
  const btn=(a,i,t)=>`<button class="pill" data-a="${a}" data-i="${i}">${t}</button>`;
  showM(`<h2>لوحة الإدارة</h2><div class="meta"><span>المنشورة: ${ROWS.filter(r=>r.published).length}</span><span>الكل: ${ROWS.length}</span><span>الطلبات: ${rq.length}</span></div>
@@ -289,12 +308,18 @@ function form(r={}){FIM=(r.images||[]).slice();const g=k=>esc(r[k]??"");
  <div id="ims"></div><label class="note">صور العقار الخارجية (حتى 12، تُضغط تلقائياً)</label><input id="fi" type="file" accept="image/*" multiple><p class="note" id="ist"></p><input name="video_url" type="url" dir="ltr" placeholder="رابط فيديو العقار (يوتيوب) https://..." value="${g("video_url")}"><input name="doc_type" placeholder="نوع الوثيقة: بصيرة أو سجل عقاري" value="${g("doc_type")}"><input name="inspected_at" type="date" value="${g("inspected_at")}"><textarea name="ownership_notes" rows="2" placeholder="تفاصيل الملكية والوثائق">${g("ownership_notes")}</textarea>
  ${[["featured","عقار مميز"],["published","منشور في الموقع"],["verified","موثوق (اعتماد المدير)"]].map(([k,l])=>`<label><input style="width:auto;min-height:0" type="checkbox" name="${k}" ${r[k]?"checked":""}> ${l}</label>`).join("")}
  <button class="btn" data-a="save" data-i="${r.id||""}">حفظ</button><button class="btn ghost" data-a="back">رجوع</button></div>`);showIms();$("#fi").onchange=addIms}
-$("#adm").onclick=e=>{e.preventDefault();TOK?panel():login()};
+$("#adm").onclick=e=>{e.preventDefault();ISADM?panel():login()};
+$("#acc").onclick=()=>acct();
 $("#sheet").addEventListener("click",async e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a,id=b.dataset.i,r=ROWS.find(x=>x.id==id);
  try{
+ if(a=="cl"||a=="cs"){const em=$("#ce").value.trim(),pw=$("#cp").value;if(!em||pw.length<8)return acctForm(Z("اكتب البريد وكلمة مرور من 8 أحرف على الأقل","Enter an email and a password of 8+ characters"));
+ try{if(a=="cl")saveS(await authReq("password",{email:em,password:pw}));else{const r=await fetch(SB+"/auth/v1/signup",{method:"POST",headers:{apikey:KEY,"Content-Type":"application/json"},body:JSON.stringify({email:em,password:pw})});const j=await r.json();if(!r.ok)throw new Error(j.msg||j.error_description||j.message||"");if(!j.access_token)return acctForm(Z("تم إنشاء الحساب. افتح بريدك وأكّد الحساب ثم سجّل الدخول.","Account created. Confirm your email, then sign in."));saveS(j)}
+ await chkAdm();await loadAll();return acct()}catch(err){return acctForm(msgAr(err.message))}}
+ if(a=="cout"){dlClear();await loadAll();return $("#m").classList.remove("open")}
+ if(a=="cadm")return panel();
  if(a=="rmim"){FIM.splice(+id,1);showIms();return}
  if(a=="login")return doLogin();
- if(a=="out"){TOK=null;await loadAll();return $("#m").classList.remove("open")}
+ if(a=="out"){dlClear();await loadAll();return $("#m").classList.remove("open")}
  if(a=="back")return panel();
  if(a=="new")return form();
  if(a=="edit")return form(r);
@@ -305,7 +330,7 @@ $("#sheet").addEventListener("click",async e=>{const b=e.target.closest("[data-a
  else if(a=="seed"){if(!confirm("إضافة 8 عقارات تجريبية مخفية؟"))return;await api("/rest/v1/properties",{method:"POST",body:JSON.stringify(SAMPLE.map(p=>({type:p.t,hood:p.h,title_ar:p.n[0],title_en:p.n[1],price_usd:p.p,area_m2:p.m,area_labna:+(p.m/44.44).toFixed(1),rooms:p.r,floors:p.fl,featured:!!p.f,published:false,verified:false,doc_type:p.doc}))) })}
  else if(a=="rates"){for(const [c,v] of [["YER",$("#ry").value],["SAR",$("#rs").value]])await api("/rest/v1/rates?currency=eq."+c,{method:"PATCH",body:JSON.stringify({per_usd:+v,updated_at:new Date().toISOString()})})}
  await loadAll();panel()}catch(err){alert("تعذر التنفيذ: "+err.message)}});
-applyLang();loadAll();
+applyLang();boot();
 setTimeout(()=>$("#splash").classList.add("off"),1900);
 </script>
 </body>
